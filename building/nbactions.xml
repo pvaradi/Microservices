@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-run 8081</actionName>
+            <displayName>port 8081</displayName>                                                                
+            <goals>
+                <goal>wildfly-swarm:run</goal>
+            </goals>
+       <properties>        
+            <swarm.http.port>8081</swarm.http.port>
+            <swarm.ds.connection.url>jdbc:mysql://localhost:3306/building?useSSL=false</swarm.ds.connection.url>    
+            <swarm.ds.username>admin</swarm.ds.username>                                                        
+            <swarm.ds.password>admin</swarm.ds.password>                                                        
+            <swarm.ds.name>hoe</swarm.ds.name> 
+        </properties>             
+        </action>
+    </actions>

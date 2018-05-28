@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+        <title>Halozati alkalmazasok - City and Buildings</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+    <body onload="refreshTables()">
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>                        
+		  </button>
+		  <a class="navbar-brand" href="#">Hálózati alkalmazások - City & Buildings</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+		  <ul class="nav navbar-nav">
+			<li class="active"><a data-toggle="tab" href="#buildingsandcity">Buildings of City</a></li>
+			<li><a data-toggle="tab" href="#city">Cities</a></li>
+			<li><a data-toggle="tab" href="#buildings">Buildings</a></li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+	
+  
+  
+  <div class="tab-content">
+	<div id="buildingsandcity" class="container tab-pane fade in active">
+		
+		<!--POST-->
+		<div id="post" class="form-group">
+			<!--<input id="name">-->
+			<!--<input id="description">-->
+			<br>
+			<label for="nameSelect">Select city:</label>
+			<select id="nameSelect" class="form-control"></select>
+			<label for="descriptionSelect">Select building:</label>
+			<select id="descriptionSelect" class="form-control"></select>
+			<br>
+			<button onclick="postData()" class="btn btn-success">Create building in city</button>
+		</div>	
+		</br>	
+		<!--PUT-->
+		<div id="put" class="form-group">
+			<!--<input id="nevmodosit">-->
+			<!--<input id="descmodosit">-->
+			<label for="nevmodositSelect">Select City - ID - to be modified:</label>
+			<select id="nevmodositSelect" class="form-control"></select>
+			<label for="descmodositSelect">Modify the type of building:</label>
+			<select id="descmodositSelect" class="form-control"></select>
+			<br>
+			<button onclick="putData()" class="btn btn-warning">Modify building in city</button>
+		</div>
+		</br>
+		
+		<!--DEL-->
+		<div id="del" class="form-group">
+			<label for="deleteIdSelect">Delete building in city:</label>
+			<select id="deleteIdSelect" class="form-control"></select>
+			<br>
+            <button onclick="delData()" class="btn btn-danger">Delete building in city</button>
+		</div>
+		</br>		
+		</br>	
+		
+		<!--GET-->
+		<div id="get">
+			<div id="showData">
+			</div>
+		</div>
+		</br>
+	</div>
+	
+	<div id="buildings" class="container tab-pane fade">
+		<!--POST-->
+		<div id="buildingpost">
+			<label for="buildingname">Enter building name:</label>
+			<input type="text" id="buildingname" class="form-control">
+			<label for="buildingdescription">Enter building description:</label>
+			<input id="buildingdescription" class="form-control">
+			<br>
+			<button onclick="postBuildingData()" class="btn btn-success">Create building</button>
+		</div>	
+		</br>
+		
+		<!--PUT-->
+		<div id="buildingput">
+			<label for="buildingSelect">Modify building description:</label>
+			<select id="buildingSelect" class="form-control"></select>
+			<br>
+			<input id="buildingdescmodosit" class="form-control">
+			<br>
+			<button onclick="putBuildingData()" class="btn btn-warning">Modify building</button>
+		</div>
+		</br>
+		
+		<!--DEL-->
+		<div id="buildingdel">
+			<label for="buildingIdSelect">Delete building:</label>
+			<select id="buildingIdSelect" class="form-control"></select>
+			<br>
+            <button onclick="delBuildingData()" class="btn btn-danger">Delete building</button>
+		</div>
+		</br>		
+		</br>	
+		
+		<!--GET-->
+		<div id="buildingget">
+			<div id="showBuildingData"></div>
+		</div>
+		</br>
+
+	</div>
+	
+	<div id="city" class="container tab-pane fade">
+		<!--POST-->
+		<div id="citypost">
+			<label for="cityname">Enter city name:</label>
+			<input id="cityname" class="form-control">
+			<label for="citydescription">Enter city description:</label>
+			<input id="citydescription" class="form-control">
+			<br>
+			<button onclick="postCityData()" class="btn btn-success">Create city</button>
+		</div>	
+		</br>
+		
+		<!--PUT-->
+		<div id="cityput">
+			<div id="showCityDropdown"></div>
+			<label for="citySelect">Modify city description:</label>
+			<select id="citySelect" class="form-control"></select>
+			<br>
+			<input id="citydescmodosit" class="form-control">
+			<br>
+			<button onclick="putCityData()" class="btn btn-warning">Modify city</button>
+		</div>
+		</br>
+		
+		<!--DEL-->
+		<div id="citydel">
+			<label for="cityIdSelect">Delete city:</label>
+			<select id="cityIdSelect" class="form-control"></select>
+			<br>
+            <button onclick="delCityData()" class="btn btn-danger">Delete city</button>
+		</div>
+		</br>		
+		</br>	
+		
+		<!--GET-->
+		<div id="cityget">
+			<div id="showCityData"></div>
+		</div>
+		</br>
+
+	</div>	
+  </div>
+</body>
+	
+<script src="buildingsofcity.js"></script>	
+<script src="city.js"></script>	
+<script src="building.js"></script>	
+<script src="refresh.js"></script>	
+	
+</html>
